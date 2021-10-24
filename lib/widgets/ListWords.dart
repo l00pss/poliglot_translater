@@ -21,7 +21,11 @@ class _ListWordsState extends State<ListWords> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search),)
+        ],
+      ),
       body: FutureBuilder(
         future: widget.function,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){

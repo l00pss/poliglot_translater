@@ -4,8 +4,9 @@ import 'package:poliglot_translater/entities/Word.dart';
 import 'package:poliglot_translater/widgets/ListWords.dart';
 import 'package:poliglot_translater/widgets/WordCard.dart';
 
+import 'SearchBar.dart';
+
 class Other extends StatefulWidget {
-  const Other({Key? key}) : super(key: key);
 
   @override
   _OtherState createState() => _OtherState();
@@ -83,7 +84,9 @@ class _OtherState extends State<Other> {
                     color: Theme.of(context).cardColor,
                     shape: BoxShape.circle,
                   ),
-                  child: IconButton(onPressed: (){}, icon: Icon(Icons.search,size: 30,))),
+                  child: IconButton(onPressed: (){
+                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>SearchBar()));
+                  }, icon: Icon(Icons.search,size: 30,))),
               Container(
                   margin: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
