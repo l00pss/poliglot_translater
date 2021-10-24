@@ -77,7 +77,7 @@ class _HomePanelState extends State<HomePanel> {
 
             /// Likes
             DotNavigationBarItem(
-              icon: Icon(Icons.camera),
+              icon: Icon(Icons.add_a_photo),
               selectedColor: Color(0xff73544C),
             ),
 
