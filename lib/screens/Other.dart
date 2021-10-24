@@ -85,17 +85,8 @@ class _OtherState extends State<Other> {
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(onPressed: (){
-                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>SearchBar()));
+                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>SearchBar(function: getWidgetList(),)));
                   }, icon: Icon(Icons.search,size: 30,))),
-              Container(
-                  margin: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: IconButton(onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ListWords(function: getWidgetList())));
-                  }, icon: Icon(Icons.list,size: 30,))),
               Container(
                   margin: const EdgeInsets.all(6),
                   decoration: BoxDecoration(

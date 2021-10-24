@@ -8,6 +8,7 @@ class ListWords extends StatefulWidget {
   ListWords({
     required this.function,
   });
+
   @override
   _ListWordsState createState() => _ListWordsState();
 
@@ -15,18 +16,9 @@ class ListWords extends StatefulWidget {
 }
 
 class _ListWordsState extends State<ListWords> {
-
-
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.search),)
-        ],
-      ),
-      body: FutureBuilder(
+    return FutureBuilder(
         future: widget.function,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
           if(!snapshot.hasData){
@@ -56,8 +48,8 @@ class _ListWordsState extends State<ListWords> {
             );
           }
         },
-      ),
-    );
+      );
+
   }
 }
 
