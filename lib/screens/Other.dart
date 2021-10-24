@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poliglot_translater/dataAccess/repositories/TranslaterManager.dart';
 import 'package:poliglot_translater/entities/Word.dart';
+import 'package:poliglot_translater/widgets/ListWords.dart';
+import 'package:poliglot_translater/widgets/WordCard.dart';
 
 class Other extends StatefulWidget {
   const Other({Key? key}) : super(key: key);
@@ -12,6 +14,18 @@ class Other extends StatefulWidget {
 class _OtherState extends State<Other> {
   var en = TextEditingController();
   var az = TextEditingController();
+
+  Future<List<WordCard>> getWidgetList() async{
+    var list = await TranslaterManager().getAllWords();
+    var _actionItems = <WordCard>[];
+    list.forEach((element) {
+      _actionItems.add(WordCard(
+        element.en,(){},element.az
+      ));
+    });
+    return _actionItems;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,16 +90,18 @@ class _OtherState extends State<Other> {
                     color: Theme.of(context).cardColor,
                     shape: BoxShape.circle,
                   ),
-                  child: IconButton(onPressed: (){}, icon: Icon(Icons.list,size: 30,))),
+                  child: IconButton(onPressed: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ListWords(function: getWidgetList())));
+                  }, icon: Icon(Icons.list,size: 30,))),
               Container(
                   margin: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     shape: BoxShape.circle,
                   ),
-                  child: IconButton(onPressed: (){}, icon: Icon(Icons.delete,size: 30,color: Colors.redAccent,)))
+                  child: IconButton(onPressed: (){}, icon: Icon(Icons.delete,size: 30,color: Colors.redAccent,))),
             ],
-          )
+          ),
         ],
       ),
     );
